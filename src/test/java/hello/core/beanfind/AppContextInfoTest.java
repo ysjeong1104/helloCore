@@ -33,6 +33,8 @@ public class AppContextInfoTest {
         for (String beanName : beanDefinitionName) {
 
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanName);
+            //BeanDefinition.ROLE_APPLICATION 사용자가 정의한 빈
+            //BeanDefinition.ROLE_INFRASTRUCTURE 스프링내부에서 사용하는 빈
 
             if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
                 Object bean = ac.getBean(beanName);
