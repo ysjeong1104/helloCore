@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.AppConfig;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.*;
 import org.assertj.core.api.Assertions;
@@ -9,8 +10,9 @@ public class OrderTest {
 
     @Test
     void createOrder(){
-        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
-        OrderService orderService = new OrderServiceImpl(memberService,new FixDiscountPolicy());
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memA", Grade.VIP);
